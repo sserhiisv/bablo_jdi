@@ -1,0 +1,16 @@
+{% load thumbnail %}
+
+<div class="right-popular-set">
+    {% for most_read_post in most_read_posts %}
+        <a href="{% url 'view_post' pk=most_read_post.pk %}">
+            <div class="right-popular-block">
+                {% thumbnail most_read_post.image "300" as im %}
+                    <div class="right-popular-inner" style="background-image: url({{ im.url }});"></div>
+                {% endthumbnail %}
+                <div class="popular-post">
+                    <span class="popular-title">{{ most_read_post.title|truncatewords:7 }}</span>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>

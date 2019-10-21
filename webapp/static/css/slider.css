@@ -1,0 +1,159 @@
+.Wrap {
+    width: 390px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.slideWrp {
+    width: 390px;
+    position: relative;
+    overflow-x: hidden;
+    width: 9999px;
+}
+
+.slide-block {
+    float: left;
+    width: 390px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    margin-right: 0px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.slide-block-img {
+    background-size: cover;
+    background-position: center;
+}
+
+.indexActivate {
+    text-align: center;
+}
+
+.indexActivate ul {
+    display: inline-block;
+    //display: inline;
+    zoom: 1;
+    font-size: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.indexActivate li {
+    margin: 2px;
+    float: left;
+    display: inline;
+    background-color: #ccc;
+    border-radius: 6px;
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    line-height: 22px;
+}
+
+.indexActivate ul li:hover {
+    background-color: #b77;
+}  
+
+
+@media (max-width: 1350px) and (min-width: 1220px) {
+
+    .Wrap {
+        width: 360px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .slideWrp {
+        width: 360px;
+        position: relative;
+        overflow-x: hidden;
+        width: 9999px;
+    }
+
+    .slide-block {
+        float: left;
+        width: 360px;
+        margin-left: 0px;
+        margin-bottom: 10px;
+        margin-right: 0px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 1219px) and (min-width: 1150px) {
+
+    .Wrap {
+        width: 340px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .slideWrp {
+        width: 340px;
+        position: relative;
+        overflow-x: hidden;
+        width: 9999px;
+    }
+
+    .slide-block {
+        float: left;
+        width: 340px;
+        margin-left: 0px;
+        margin-bottom: 10px;
+        margin-right: 0px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 1149px) and (min-width: 1051px) {
+
+    .Wrap {
+        width: 300px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .slideWrp {
+        width: 300px;
+        position: relative;
+        overflow-x: hidden;
+        width: 9999px;
+    }
+
+    .slide-block {
+        float: left;
+        width: 300px;
+        margin-left: 0px;
+        margin-bottom: 10px;
+        margin-right: 0px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 1050px) and (min-width: 993px) {
+
+    .Wrap {
+        width: 280px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .slideWrp {
+        width: 280px;
+        position: relative;
+        overflow-x: hidden;
+        width: 9999px;
+    }
+
+    .slide-block {
+        float: left;
+        width: 280px;
+        margin-left: 0px;
+        margin-bottom: 10px;
+        margin-right: 0px;
+        height: 400px;
+    }
+}

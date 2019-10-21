@@ -1,0 +1,22 @@
+.tag {
+	padding: 30px;
+}
+
+.tag-inner {
+	width: 100%;
+	padding: 0 0 15px 0;
+	font-size: 20px;
+}
+
+#tag-name {
+	color: #cc0000;
+}
+
+@media (max-width: 992px) {
+
+   .tag-inner {
+		font-size: 42px;
+	}
+
+
+}

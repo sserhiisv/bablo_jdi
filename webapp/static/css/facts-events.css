@@ -1,0 +1,64 @@
+.events-list,
+.facts-list {
+	width: 100%;
+	padding: 30px;
+}
+
+.event-block,
+.fact-block {
+	width: 100%;
+	height: 200px;
+}
+
+.event-block-img,
+.fact-block-img {
+	width: 25%;
+	height: 200px;
+	float: left;
+	background-size: cover;
+    background-position: center;
+}
+
+.event-block-about,
+.fact-block-about {
+	width: 75%;
+	float: left;
+	padding: 10px 25px;
+}
+
+.event-block-about-title,
+.fact-block-about-title {
+	width: 100%;
+	font-size: 25px;
+}
+
+.event-block-about-date-place {
+	width: 100%;
+	font-size: 18px;
+	padding: 5px 0;
+}
+
+.event-block-about-desc {
+	width: 100%;
+	overflow: hidden;
+}
+
+.fact-block-about-desc {
+	width: 100%;
+	overflow: hidden;
+	padding: 15px 0;
+}
+
+.rasporka {
+	width: 100%;
+	height: 20px;
+}
+
+@media (max-width: 992px) {
+
+	.event-block-about-title,
+	.fact-block-about-title {
+		font-size: 42px;
+	}
+
+}

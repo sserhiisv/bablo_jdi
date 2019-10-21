@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load compress %}
+{% load staticfiles %}
+
+{% block title %}
+    <title>{% trans 'Поиск' %} | Just double i</title>
+{% endblock %}
+
+{% block loadfiles %}
+	{% compress css %}
+	<link rel="stylesheet" type="text/css" href='{% static "css/search.css" %}'>
+	{% endcompress %}
+{% endblock %}
+
+{% block section %}
+	<span id="logo-section">{% trans 'Поиск' %}</span>
+{% endblock %}
+
+{% block search %}
+	<div class="search">
+	    <div class="results" id="results">
+	    	<div class="search-results">
+				{% if messages %}
+					<h4>Oops!</h4>
+					<center>
+						<ul id="messages">
+							{% for message in messages %}
+								<li>{{ message }}</li>
+							{% endfor %}
+						</ul>
+					</center>
+				{% endif %}
+
+				<ul class="nav nav-pills nav-stacked blue">
+					{% for result_post in result %}
+						<li>
+							<a class="button_category_posts" href="{{ result_post.get_absolute_url }}">
+								{{ result_post.title|truncatewords:7 }}
+							</a>
+							<span class="rubric">{{ result_post.category }}</span>
+							<span class="rubric">{{ result_post.date }}</span>
+							<span class="rubric">{{ result_post.author }}</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: web
+    command: bash -c "gunicorn bablo.wsgi -b 0.0.0.0:1499"
+    volumes:
+      - ./:/web
+      - ./webapp/static:/web/webapp/static
+      - ./webapp/media:/web/webapp/media
+
+  nginx:
+    build: ./config/nginx/
+    restart: always
+    ports:
+      - "80:80"
+    links:
+      - web:web
+    volumes:
+      - ./config/nginx:/config/nginx
+      - ./config/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+#      - ./webapp/static:/web/webapp/static
+#      - ./webapp/media:/web/webapp/media
+    depends_on:
+      - web

@@ -1,0 +1,154 @@
+/*header*/
+.header-inner {
+    padding-top: 15px;
+    padding-bottom: 0px;
+    border-bottom: solid 1px black;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#logo1 {
+    font-size: 45px;
+    font-weight: bold;
+    font-family: Arial;
+    color: #cc0000;
+}
+
+#logo2 {
+    font-size: 45px;
+    font-weight: bold;
+    font-family: Arial;
+    color: #fff;
+    text-shadow: red 1px 0px, red 1px 1px, red 0px 1px, red -1px 1px, red -1px 0px, red -1px -1px, red 0px -1px, red 1px -1px, red 0 0 3px, red 0 0 3px, red 0 0 3px, red 0 0 3px, red 0 0 3px, red 0 0 3px, red 0 0 3px, red 0 0 3px;
+}
+
+#logo-section {
+    font-size: 18px;
+    font-family: Arial;
+}
+
+.logo-block {
+    display: inline-block;
+    width: 38%;
+}
+
+.logo-bar {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+}
+
+.logo-bar span {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.logo-bar span:hover {
+    cursor: pointer;
+}
+
+.column {
+    display: inline-block;
+    float: right;
+    position: relative;
+    width: 31%;
+    margin-top: 5px;
+}
+
+.language-header {
+    float: right;
+    margin-top: 14px;
+}
+
+.language-header a {
+    font-size: 15px;
+    color: #C6BDBD;
+}
+
+.language-header a:hover {
+    cursor: pointer;
+    color: #AA0101;
+}
+
+#lang a.active-lang {
+    color: #AA0101;
+}
+
+.language-header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.language-header ul li {
+    float: left;
+    margin: 3px;
+}
+
+/*end header*/
+
+/*changing link style in range less than 992px (sm-size)*/
+@media (max-width: 992px) {
+
+    #logo {
+        font-size: 60px;
+    }
+
+    #logo-plus {
+        font-size: 40px;
+    }
+
+     #logo-section {
+        font-size: 40px;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .logo-block {
+        width: 100%;
+        text-align: center;
+        padding-left: 42px;
+    }
+
+    .logo-bar {
+        width: 0;
+    }
+
+    .column {
+        width: 0;
+    }
+
+    .column-small {
+        width: 100%;
+        height: 100px;
+        text-align: center;
+    }
+
+    .language-header-small {
+        text-align: center;
+        width: 100%;
+    }
+
+    .language-header-small a {
+        font-size: 70px;
+        color: #C6BDBD;
+    }
+
+    .language-header-small a:hover {
+        cursor: pointer;
+        color: #AA0101;
+    }
+
+    #lang-small a.active-lang {
+        color: #AA0101;
+    }
+
+    .language-header-small span {
+        margin: 10px;
+    }
+
+}
+/*end changing link style in range less than 992px (sm-size)*/

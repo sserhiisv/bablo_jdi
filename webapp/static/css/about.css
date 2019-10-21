@@ -1,0 +1,46 @@
+.about {
+	width: 100%;
+	margin: 30px 15px;
+}
+
+.about {
+	width: 100%;
+	padding: 15px;
+}
+
+.about-logo {
+	font-size: 30px;
+	width: 100%;
+	padding: 10px 0;
+}
+
+.about-main,
+.about-ps {
+	font-size: 20px;
+	width: 100%;
+	padding: 10px 0;
+}
+
+.about-footer {
+	font-size: 18px;
+	width: 100%;
+	padding: 10px 0;
+}
+
+@media (max-width: 992px) {
+
+
+	.about-logo {
+		font-size: 60px;
+	}
+
+	.about-main,
+	.about-ps {
+		font-size: 42px;
+	}
+
+	.about-footer {
+		font-size: 45px;
+	}
+
+}

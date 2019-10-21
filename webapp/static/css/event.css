@@ -1,0 +1,81 @@
+.event {
+	padding: 50px 30px;
+	width: 100%;
+}
+
+.event-title {
+	width: 100%;
+	font-size: 40px;
+	padding: 0 0 15px 0;
+}
+
+.event-info {
+	width: 100%;
+	height: 200px;
+}
+
+.event-info-date-place {
+	float: left;
+	width: 50%;
+	padding-left: 10px;
+}
+
+.event-img {
+	float: left;
+	width: 50%;
+}
+
+.event-img img {
+	width: 300px;
+}
+
+hr::after {
+    /* Градиент */
+    background: #ffffff;
+    background: -moz-linear-gradient(left, #ffffff 0%, #c00000 100%);
+    background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0%, #ffffff), color-stop(100%, #c00000));
+    background: -webkit-linear-gradient(left, #ffffff 0%, #c00000 100%);
+    background: -o-linear-gradient(left, #ffffff 0%, #c00000 100%);
+    background: -ms-linear-gradient(left, #ffffff 0%, #c00000 100%);
+    background: linear-gradient(to left, #ffffff 0%, #c00000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cc0000', GradientType=1);
+    content: "";
+    display: block;
+    /* Вместо толщины */
+    height: 1px;
+    width: 100%;
+}
+
+.event-content {
+	padding-top: 15px;
+	width: 100%;
+}
+
+
+@media (max-width: 992px) {
+
+
+	.event-title {
+		font-size: 50px;
+	}
+
+	.event-info-date-place {
+		font-size: 35px;
+		float: none;
+		width: 100%;
+	}
+	    
+    .event-content {
+		font-size: 35px;
+	}
+
+	.event-img {
+		float: none;
+		width: 100%;
+	}
+
+	.event-info {
+		width: 100%;
+		height: auto;
+	}
+}

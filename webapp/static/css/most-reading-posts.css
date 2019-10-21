@@ -1,0 +1,50 @@
+/*right popular*/
+.right-popular {
+    margin-top: 25px;
+}
+
+.right-popular-set {
+    padding-top: 10px;
+}
+
+.right-popular-inner {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.right-popular-block {
+    padding-top: 10px;
+    border-bottom: solid 1px white;
+}
+
+.right-popular-block:hover .popular-title {
+    color: #cc0000;
+}
+
+.popular-post {
+    width: 100%;
+    min-height: 60px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.popular-title {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial;
+    color: black;
+}
+
+/*right popular*/
+
+/*changing link style in range less than 992px (sm-size)*/
+@media (max-width: 992px) {
+
+    .popular-title {
+        font-size: 50px;
+    }
+
+
+}
+/*end changing link style in range less than 992px (sm-size)*/

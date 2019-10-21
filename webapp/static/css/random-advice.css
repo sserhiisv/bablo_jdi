@@ -1,0 +1,110 @@
+/* for readinf */
+.f-read {
+    padding-top: 30px;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 100px;
+}
+
+.f-read-title {
+    text-align: center;
+    border-bottom: solid 1px #b80202;
+    font-size: 25px;
+}
+
+.f-read-set {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.f-read-set div {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+
+.f-read-block {
+    width: 342px;
+    height: 340px;
+    padding: 7px;
+}
+
+.f-read-block:hover .f-read-block-title-inner {
+    color: #cc0000;
+}
+
+.f-read-block-img {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.f-read-block-title {
+    width: 100%;
+    padding-top: 20px;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.f-read-block-title-inner {
+    color: #000;
+}
+
+.f-read-block-title-inner:hover {
+    color: #cc0000;
+}
+
+/* end for readinf */
+
+@media (max-width: 992px) {
+
+    .f-read {
+        padding-top: 30px;
+        width: 100%;
+        height: auto;
+        margin-bottom: 100px;
+        padding-bottom: 100px;
+    }
+
+    .f-read-title {
+        border-bottom: solid 1px #b80202;
+        font-size: 55px;
+    }
+
+    .f-read-block-title-inner {
+        font-size: 40px;
+    }
+
+    .f-read-set {
+        padding-top: 15px;
+        text-align: center;
+    }
+
+    .f-read-set div {
+        display: inline;
+        text-align: left;
+    }
+
+    .f-read-block {
+        width: 100%;
+        padding: 7px;
+        padding-bottom: 50px;
+    }
+
+    .f-read-block-img {
+        float: left;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .f-read-block-title {
+        float: left;
+        padding-top: 20px;
+        font-size: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 50px;
+    }
+
+}

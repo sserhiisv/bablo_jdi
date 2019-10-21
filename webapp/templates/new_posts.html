@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load i18n %}
+{% load thumbnail %}
+{% load compress %}
+
+{% block title %}
+    <title>{% trans 'Новое' %} | Just double i</title>
+{% endblock %}
+
+{% block meta_desc %}
+	<meta name="keywords" content="{% trans 'Новое' %}">
+    <meta name="description" content="{% trans 'Новое' %}">
+{% endblock %}
+
+{% block loadfiles %}
+	{% compress css %}
+	<link rel="stylesheet" type="text/css" href='{% static "css/new-posts.css" %}' />
+	{% endcompress %}
+
+	{% compress js %}
+	<script src='{% static "js/new.js" %}'></script>
+	{% endcompress %}
+{% endblock %}
+
+{% block section %}
+	<span id="logo-section">{% trans 'Новое' %}</span>
+{% endblock %}
+
+{% block latest_posts %}
+
+<div class="new">
+	<div class="new-posts">
+		<div class="new-section">
+			<span>
+				{% trans 'Новые публикации' %} <span class="glyphicon glyphicon-arrow-down"></span>
+				</span>
+		</div>
+		{% for new_post in new_posts %}
+			<div class="new-posts-inner">
+				{% thumbnail new_post.image "350" as im %}
+				<div class="new-posts-img" style="background-image: url({{ im.url }});"></div>
+				{% endthumbnail %}
+				<div class="new-posts-about">
+					<div class="new-posts-about-title">
+						<a class="hidden-lg hidden-md" href="{% url 'view_post' pk=new_post.pk %}">
+							{{ new_post.title|truncatewords:7 }}
+						</a>
+						<a class="hidden-xs hidden-sm" href="{% url 'view_post' pk=new_post.pk %}">
+							{{ new_post.title }}
+						</a>
+					</div>
+					<div class="new-posts-about-desc hidden-xs hidden-sm">
+						<p class="new-post-date">{{ new_post.date }}</p>
+						{{ new_post.description|safe|truncatewords:30 }}
+					</div>
+				</div>
+			</div>
+			<div class="new-rasporka"></div>
+		{% endfor %}
+	</div>
+
+	{% if is_paginated %}
+		<div class="pag">
+		  	<ul class="pagination">
+		    	{% if page_obj.has_previous %}
+		      		<li>
+		      			<a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+		      		</li>
+		    	{% else %}
+		      		<li class="disabled">
+		      			<span>&laquo;</span>
+		      		</li>
+		    	{% endif %}
+
+		    	{% for i in paginator.page_range %}
+		      		{% if page_obj.number == i %}
+		        		<li class="active">
+		        			<span>
+		        				{{ i }} <span class="sr-only">(current)</span>
+		        			</span>
+		        		</li>
+		      		{% else %}
+		        		<li>
+		        			<a href="?page={{ i }}">{{ i }}</a>
+		        		</li>
+		      		{% endif %}
+		      	{% endfor %}
+
+		    	{% if page_obj.has_next %}
+		      		<li>
+		      			<a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+		      		</li>
+		    	{% else %}
+		      		<li class="disabled">
+		      			<span>&raquo;</span>
+		      		</li>
+		    	{% endif %}
+		  	</ul>
+		</div>
+	{% endif %}
+
+	<hr>
+
+</div>
+
+{% endblock %}

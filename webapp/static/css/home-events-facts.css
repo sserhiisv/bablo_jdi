@@ -1,0 +1,18 @@
+
+
+/*changing link style in range less than 992px (sm-size)*/
+@media (max-width: 992px) {
+
+	
+    .media-heading {
+    	font-size: 45px;
+    }
+
+    .events .section-title {
+        font-size: 50px;
+        text-align: center;
+        border-bottom: solid 2px #cc0000;
+    }
+
+}
+/*end changing link style in range less than 992px (sm-size)*/

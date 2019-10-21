@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load i18n %}
+{% load compress %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+    <title>{{ post.title }} | Just double i</title>
+{% endblock %}
+
+{% block meta_desc %}
+	<meta name="keywords" content="{% for tag in post.tag.all %}{{ tag }} | {% endfor %}">
+    <meta name="description" content="{{ read_post.description }}">
+{% endblock %}
+
+{% block loadfiles %}
+	{% compress css %}
+	<link rel="stylesheet" type="text/css" href='{% static "css/post.css" %}' />
+	{% endcompress %}
+
+	{% compress js %}
+	<script src='{% static "js/bootstrap.min.js" %}'></script>
+	<script src='{% static "js/post.js" %}'></script>
+	<!--<script id="twitter-wjs" type="text/javascript" async defer src="//platform.twitter.com/widgets.js"></script>-->
+
+	<!--<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>-->
+	<!--<script src="//yastatic.net/share2/share.js"></script>-->
+	{% endcompress %}
+{% endblock %}
+
+{% block section %}
+	{% ifequal LANGUAGE_CODE 'uk' %}
+        <span id="logo-section">{{ read_post.category.name_ua }}</span>
+    {% else %}
+        <span id="logo-section">{{ read_post.category }}</span>
+    {% endifequal %}
+{% endblock %}
+
+{% block post %}
+
+<div class="post">
+	<div class="post-info">
+		{{ read_post.date }} |
+		<br class="hidden-lg hidden-md">
+		{{ read_post.author }} |
+		<span class="glyphicon glyphicon-eye-open"></span> {{ hitcount.total_hits }}
+	</div>
+	<div class="post-title">
+		{{ read_post.title }}
+	</div>
+	<div class="post-description">
+		{{ read_post.description|safe }}
+	</div>
+	<!--
+	<div class="post-img">
+		<img src="{{ post.image.url }}">
+	</div>
+	-->
+	<div class="post-content" id="post-content">
+		{{ read_post.content|safe }}
+	</div>
+	<div class="post-tags">
+		<span>Теги:</span>
+		{% for tag in read_post.tag.all %}
+			<a href="{% url 'tag' pk=tag.pk %}">
+				<span class="label label-primary">{{ tag }}</span>
+			</a>
+		{% endfor %}
+	</div>
+	<div class="share">
+		<div class="ya-share2" data-services="vkontakte,facebook,gplus,twitter"></div>
+	</div>
+</div>
+
+{% if similar %}
+	<div class="post-similar">
+		<div class="post-similar-read">
+			<span>{% trans 'Читайте также' %}</span>
+		</div>
+		<div class="post-similar-set">
+			{% for post_similar in similar %}
+				<a href="{% url 'view_post' pk=post_similar.pk %}">
+					<div class="post-similar-block">
+						<div class="post-similar-img" style="background-image: url({{ post_similar.image.url }});"></div>
+						<div class="post-similar-title">
+							<span class="post-similar-title-inner">{{ post_similar.title|truncatewords:7 }}</span>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+{% endif %}
+{% endblock %}
+
+{% block modal %}
+	<div id="myModal" class="modal">
+	  	<img class="modal-content" id="img01">
+	</div>
+{% endblock %}

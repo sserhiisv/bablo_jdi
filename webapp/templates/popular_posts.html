@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load i18n %}
+{% load thumbnail %}
+{% load compress %}
+
+{% block title %}
+    <title>{% trans 'Популярное' %} | Just double i</title>
+{% endblock %}
+
+{% block meta_desc %}
+	<meta name="keywords" content="{% trans 'Популярное' %}">
+    <meta name="description" content="{% trans 'Популярное' %}">
+{% endblock %}
+
+{% block loadfiles %}
+	{% compress css %}
+	<link rel="stylesheet" type="text/css" href='{% static "css/new-posts.css" %}' />
+	{% endcompress %}
+
+	{% compress js %}
+	<script src='{% static "js/new.js" %}'></script>
+	{% endcompress %}
+{% endblock %}
+
+{% block section %}
+<span id="logo-section">{% trans 'Популярное' %}</span>
+{% endblock %}
+
+{% block popular %}
+
+<div class="popular" style="padding: 30px;">
+	{% for pop_post in pop_posts %}
+		<div class="new-posts-inner">
+			{% thumbnail pop_post.image "350" as im %}
+				<div class="new-posts-img" style="background-image: url({{ im.url }});"></div>
+			{% endthumbnail %}
+			<div class="new-posts-about">
+				<div class="new-posts-about-title">
+					<a class="hidden-lg hidden-md" href="{% url 'view_post' pk=pop_post.pk %}">
+						{{ pop_post.title|truncatewords:7 }}
+					</a>
+					<a class="hidden-xs hidden-sm" href="{% url 'view_post' pk=pop_post.pk %}">
+						{{ pop_post.title }}
+					</a>
+				</div>
+				<div class="new-posts-about-desc hidden-xs hidden-sm">
+					{{ post.description|safe|truncatewords:30 }}
+				</div>
+			</div>
+		</div>
+		<div class="new-rasporka"></div>
+	{% endfor %}
+</div>
+
+{% endblock %}
