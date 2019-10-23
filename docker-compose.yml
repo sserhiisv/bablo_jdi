@@ -9,6 +9,8 @@ services:
       - ./:/web
       - ./webapp/static:/web/webapp/static
       - ./webapp/media:/web/webapp/media
+    environment:
+      SERVER_IP: ${SERVER_IP}
 
   nginx:
     build: ./config/nginx/
@@ -20,7 +22,6 @@ services:
     volumes:
       - ./config/nginx:/config/nginx
       - ./config/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
-#      - ./webapp/static:/web/webapp/static
-#      - ./webapp/media:/web/webapp/media
+      - ./webapp:/web/webapp
     depends_on:
       - web

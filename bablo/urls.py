@@ -19,8 +19,8 @@ from django.conf.urls.i18n import i18n_patterns
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^hitcount/', include('hitcount.urls', namespace='hitcount')),
-    url(r'^', include('webapp.urls')),
+    url('admin/', admin.site.urls),
+    url('ckeditor/', include('ckeditor_uploader.urls')),
+    url('hitcount/', include('hitcount.urls', namespace='hitcount')),
+    url('', include('webapp.urls')),
 ]

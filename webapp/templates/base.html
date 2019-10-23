@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 {% load i18n %}
-{% load staticfiles %}
-<!--{% load categories_list %}-->
-<!--{% load most_reading %}-->
-<!--{% load random_advice %}-->
-<!--{% load category_top_post %}-->
+{% load static %}
+{% load categories_list %}
+{% load most_reading %}
+{% load random_advice %}
+{% load category_top_post %}
 {% load compress %}
 
 <html>
@@ -228,7 +228,7 @@
                     </dl>
                     <dl class="footer-rights">
                         <dd>Just double i</dd>
-                        <d`d>Copyright © 2016</dd>
+                        <dd>Copyright © 2016</dd>
                         <dd>All rights reserved</dd>
                     </dl>
                     <div class="footer-social">
@@ -252,12 +252,19 @@
                             <a href="{% url 'popular-posts' %}">{% trans "Популярное" %}</a>
                         </dd>
                     </dl>
+                    <dl class="small-first-inner">
+                        <dt>...</dt>
+                        <dd>
+                            <a href="{% url 'about' %}">{% trans "Про" %}</a>
+                        </dd>
+                    </dl>
                   </div>
                   <div class="footer-rights-small">
                     <dl class="footer-rights-small-inner">
                         <dd>Just double i | Copyright © 2016</dd>
                         <dd>All Rights Reserved</dd>
                     </dl>
+
                   </div>
                 </div>
             </div>

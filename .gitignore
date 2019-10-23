@@ -2,3 +2,5 @@ db*
 web
 *.pyc
 .DB_store
+webapp/media/*
+.env

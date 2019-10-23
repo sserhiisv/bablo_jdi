@@ -25,7 +25,9 @@ SECRET_KEY = '%3(6!kw^2m^=@d8d=8-20*76ho@@+1pjrlx2)%p++cazv+m($7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+server_ip = os.environ.get('SERVER_IP')
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', str(server_ip)]
 
 
 # Application definition
