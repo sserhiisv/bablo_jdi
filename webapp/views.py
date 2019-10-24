@@ -85,12 +85,13 @@ class Room():
 
 
 class TagPosts(ListView):
-    model = ReadPost
+    model = Tag
     template_name = "tag.html"
 
     def get_context_data(self, **kwargs):
         context = super(TagPosts, self).get_context_data(**kwargs)
-        context['tag_posts'] = ReadPost.objects.filter(date__lte=datetime.now())
+        context['tag_posts'] = ReadPost.objects.filter(date__lte=datetime.now()) \
+                                               .filter(tag__pk=self.kwargs['pk'])
         context['tag'] = Tag.objects.get(pk=self.kwargs['pk'])
         return context
 

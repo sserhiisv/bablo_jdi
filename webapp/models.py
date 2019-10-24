@@ -101,7 +101,6 @@ class ReadPost(models.Model):
     def get_absolute_url(self):
         return reverse(
             'view_post',
-            [self.id],
             kwargs={
                 'pk': self.pk
             }
