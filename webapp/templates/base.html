@@ -6,7 +6,6 @@
 {% load most_reading %}
 {% load random_advice %}
 {% load category_top_post %}
-{% load compress %}
 
 <html>
     <head>
@@ -16,7 +15,6 @@
 
         {% block title %}{% endblock %}
 
-        {% compress css %}
         <link rel="shortcut icon" href='{% static "images/favicon/favicon.ico" %}' type="image/x-icon">
         <link rel="icon" href='{% static "images/favicon/favicon.ico" %}' type="image/x-icon">
         
@@ -30,9 +28,7 @@
         <link rel="stylesheet" type="text/css" href='{% static "css/top-category-posts.css" %}' />
         <link rel="stylesheet" type="text/css" href='{% static "css/random-advice.css" %}' />
         <link rel="stylesheet" type="text/css" href='{% static "css/footer.css" %}' />
-        {% endcompress %}
 
-        {% compress js %}
         <script src='{% static "js/jquery-3.1.1.min.js" %}'></script>
         <script src='{% static "js/jquery/js.cookie.js" %}'></script>
 
@@ -40,7 +36,6 @@
         <script src='{% static "js/languages.js" %}'></script>
         <script src='{% static "js/sidebar.js" %}'></script>
         <script src='{% static "js/search.js" %}'></script>
-        {% endcompress %}
         
         {% block loadfiles %}{% endblock %}
 

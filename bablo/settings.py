@@ -27,7 +27,12 @@ DEBUG = False
 
 server_ip = os.environ.get('SERVER_IP')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', str(server_ip)]
+ALLOWED_HOSTS = [
+    '*'
+    'localhost',
+    '127.0.0.1',
+    str(server_ip)
+]
 
 
 # Application definition
@@ -42,7 +47,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'sorl.thumbnail',
     'hitcount',
-    'compressor',
+    # 'compressor',
     'webapp'
 ]
 
@@ -125,10 +130,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#   os.path.join(BASE_DIR, 'static'),
-# )
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'webapp/static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'webapp/media')
@@ -137,6 +138,7 @@ MEDIA_URL = '/media/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # 'compressor.finders.CompressorFinder'
 )
 
 
@@ -168,3 +170,42 @@ CKEDITOR_CONFIGS = {
 # CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_IMAGE_BACKEND = "pillow"
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '[contactor] %(levelname)s %(asctime)s %(message)s'
+        },
+    },
+    'handlers': {
+        # Send all messages to console
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+        # Warning messages are sent to admin emails
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+    },
+    'loggers': {
+        # This is the "catch all" logger
+        '': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    }
+}
+
+# COMPRESS_OFFLINE = True

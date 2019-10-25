@@ -1,0 +1,325 @@
+iframe,
+object,
+video {
+	max-width: 100%;
+}
+
+.post {
+	width: 100%;
+	position: relative;
+}
+
+.post-title {
+	font-size: 40px;
+	width: 100%;
+	padding: 10px 0px 0px 0px;
+}
+
+.post-title::after {
+    /* Градиент */
+    background: #ffffff;
+    background: -moz-linear-gradient(left, #ffffff 0%, #c00000 100%);
+    background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0%, #ffffff), color-stop(100%, #c00000));
+    background: -webkit-linear-gradient(left, #ffffff 0%, #c00000 100%);
+    background: -o-linear-gradient(left, #ffffff 0%, #c00000 100%);
+    background: -ms-linear-gradient(left, #ffffff 0%, #c00000 100%);
+    background: linear-gradient(to left, #ffffff 0%, #c00000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cc0000', GradientType=1);
+    content: "";
+    display: block;
+    /* Вместо толщины */
+    height: 1px;
+    width: 100%;
+}
+
+.post-description {
+	font-size: 16px;
+	width: 100%;
+	color: #A98D8D;
+	padding: 20px 0px 0px 0px;
+}
+
+.post-description:hover {
+	color: #858585;
+}
+
+.post-info {
+	font-size: 15px;
+	width: 100%;
+	padding: 20px 0px 10px 0px;
+}
+
+.post-img {
+	width: 100%;
+}
+
+.post-img img {
+	padding-top: 30px;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	max-height: auto;
+}
+
+.post-content img {
+	height: auto;
+	max-height: auto;
+}
+
+.post-content {
+	width: 100%;
+	padding: 30px;
+	line-height: 1.5;
+	font-size: 16px;
+	background: #F3F4F9;
+	/*background: #E8EDFC;*/
+	overflow: hidden;
+}
+
+.post-tags {
+	width: 100%;
+	padding: 10px 10px;
+	font-size: 20px;
+	border-left: solid 1px #cc1488;
+	margin-top: 10px;
+}
+
+.post-tags .label {
+	border-radius: 0px;
+}
+
+.post-tags .label:hover {
+	background-color: #336abc;
+}
+
+.share {
+    width: 100%;
+    padding: 25px 0;
+}
+
+.share span {
+    width: 64px;
+}
+
+.post-similar-set {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.post-similar-set div {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+
+.post-similar-read {
+	width: 100%;
+	text-align: center;
+	border-bottom: solid 1px #cc0000;
+	font-size: 25px;
+}
+
+.post-similar-block {
+	width: 270px;
+    height: 270px;
+    padding: 10px 20px;
+}
+
+.post-similar-block:hover {
+	cursor: pointer;
+}
+
+.post-similar-block:hover .post-similar-title-inner {
+	color: #cc0000;
+}
+
+.post-similar-img {
+	width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.post-similar-title {
+    width: 100%;
+    padding-top: 20px;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.post-similar-title-inner {
+    color: #000;
+}
+
+/* modal */
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    /*padding-top: 100px; /* Location of the box */
+    left: 0;
+    /*top: 0;*/
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    /*width: 80%;*/
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+
+/*end modal */
+
+/*changing link style in range less than 992px (sm-size)*/
+@media (max-width: 992px) and (min-width: 701px) {
+
+    .post-title {
+        font-size: 50px;
+    }
+
+    .post-description {
+        font-size: 35px;
+    }
+
+    .post-info {
+        font-size: 35px;
+    }
+
+    .post-content {
+        font-size: 35px;
+    }
+
+    pre {
+        font-size: 35px;
+    }
+
+    .post-tags {
+        font-size: 42px;
+        padding-bottom: 50px;
+    }
+
+    .post-similar-read {
+        font-size: 50px;
+    }
+
+    .post-similar-set {
+        padding-top: 15px;
+        text-align: center;
+    }
+
+    .post-similar-set div {
+        display: block;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .post-similar-read {
+        width: 100%;
+        text-align: center;
+        border-bottom: solid 1px #cc0000;
+        font-size: 50px;
+    }
+
+    .post-similar-block {
+        width: 100%;
+        height: 270px;
+        padding: 10px 20px;
+
+    }
+
+    .post-similar-img {
+        float: left;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .post-similar-title {
+        float: left;
+        width: 100%;
+        padding-top: 20px;
+        font-size: 50px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 50px;
+    }
+
+    .share {
+        width: 100%;
+        padding: 25px 0;
+    }
+
+    .share span {
+        width: 148px;
+        height: 64px;
+    }
+
+
+
+
+
+}
+
+@media (max-width: 700px) {
+
+    .post-title {
+        font-size: 60px;
+    }
+
+    .post-description {
+        font-size: 40px;
+    }
+
+    .post-info {
+        font-size: 40px;
+    }
+
+    .post-content {
+        font-size: 50px;
+    }
+
+}
+/*end changing link style in range less than 992px (sm-size)*/

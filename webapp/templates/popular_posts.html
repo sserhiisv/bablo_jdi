@@ -3,7 +3,6 @@
 {% load staticfiles %}
 {% load i18n %}
 {% load thumbnail %}
-{% load compress %}
 
 {% block title %}
     <title>{% trans 'Популярное' %} | Just double i</title>
@@ -15,13 +14,9 @@
 {% endblock %}
 
 {% block loadfiles %}
-	{% compress css %}
 	<link rel="stylesheet" type="text/css" href='{% static "css/new-posts.css" %}' />
-	{% endcompress %}
 
-	{% compress js %}
 	<script src='{% static "js/new.js" %}'></script>
-	{% endcompress %}
 {% endblock %}
 
 {% block section %}

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
-{% load compress %}
 {% load staticfiles %}
 
 {% block title %}
@@ -9,9 +8,7 @@
 {% endblock %}
 
 {% block loadfiles %}
-	{% compress css %}
 	<link rel="stylesheet" type="text/css" href='{% static "css/search.css" %}'>
-	{% endcompress %}
 {% endblock %}
 
 {% block section %}

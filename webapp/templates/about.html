@@ -2,7 +2,6 @@
 
 {% load staticfiles %}
 {% load i18n %}
-{% load compress %}
 
 {% block title %}
     <title>Про | Just double i</title>
@@ -14,9 +13,7 @@
 {% endblock %}
 
 {% block loadfiles %}
-	{% compress css %}
-	<link rel="stylesheet" type="text/css" href="{% static "css/about.css" %}" />
-	{% endcompress %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}" />
 {% endblock %}
 
 {% block section %}

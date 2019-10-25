@@ -80,10 +80,6 @@ class ViewPost(HitCountDetailView):
         return context
 
 
-class Room():
-    pass
-
-
 class TagPosts(ListView):
     model = Tag
     template_name = "tag.html"
@@ -149,12 +145,16 @@ def search(request):
     return render_to_response('search.html', args)
 
 
-def handler404(request):
-    return render(request, '404.html', status=404)
-
-
-def handler500(request):
-    return render(request, '500.html', status=500)
+# def handler404(request, exception, template_name="404.html"):
+#     response = render_to_response("404.html")
+#     response.status_code = 404
+#     return response
+#
+#
+# def handler500(request, exception, template_name="500.html"):
+#     response = render_to_response("500.html")
+#     response.status_code = 500
+#     return response
 
 
 def about(request):

@@ -1,0 +1,55 @@
+.search {
+	padding: 30px;
+}
+
+.input-group {
+	padding-top: 5px;
+
+}
+
+.results {
+	top: 300px;
+}
+
+#messages {
+	list-style: none;
+	font-size: 20px;
+}
+
+.blue {
+	list-style: none;
+	font-size: 20px;
+}
+
+.blue li span {
+	padding: 25px;
+}
+
+.blue li:hover a {
+	color: #cc0000;
+	background-color: #fff;
+}
+
+.rubric {
+	font-size: 15px;
+}
+
+@media (max-width: 992px) {
+
+	#messages {
+		font-size: 50px;
+	}
+
+	.blue {
+		font-size: 50px;
+	}
+
+	.blue li a:hover {
+		color: #cc0000;
+	}
+
+	.rubric {
+		font-size: 35px;
+	}
+    
+}

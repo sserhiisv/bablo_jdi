@@ -2,7 +2,6 @@
 
 {% load staticfiles %}
 {% load i18n %}
-{% load compress %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block title %}
@@ -15,18 +14,10 @@
 {% endblock %}
 
 {% block loadfiles %}
-	{% compress css %}
 	<link rel="stylesheet" type="text/css" href='{% static "css/post.css" %}' />
-	{% endcompress %}
 
-	{% compress js %}
 	<script src='{% static "js/bootstrap.min.js" %}'></script>
 	<script src='{% static "js/post.js" %}'></script>
-	<!--<script id="twitter-wjs" type="text/javascript" async defer src="//platform.twitter.com/widgets.js"></script>-->
-
-	<!--<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>-->
-	<!--<script src="//yastatic.net/share2/share.js"></script>-->
-	{% endcompress %}
 {% endblock %}
 
 {% block section %}
