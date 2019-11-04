@@ -4,3 +4,5 @@ web
 .DB_store
 webapp/media/*
 .env
+.idea
+.ve
