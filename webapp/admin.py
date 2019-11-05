@@ -8,7 +8,7 @@ from webapp.models import ReadPost, Category, Tag
 
 @admin.register(ReadPost)
 class PostAdmin(admin.ModelAdmin):
-    fields = ['id', 'title', 'author', 'tag', 'category', 'description', 'content', 'date', 'image']
+    fields = ['title', 'author', 'tag', 'category', 'description', 'content', 'date', 'image']
     list_display = ['id', 'title', 'photo_thumbnail', 'slug', 'status', 'category', 'date']
     list_filter = ['id', 'date', 'title', 'category', 'status']
     search_fields = ['id', 'title', 'status', 'date', 'category', 'author']
