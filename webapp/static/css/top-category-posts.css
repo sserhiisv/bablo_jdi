@@ -28,26 +28,25 @@
 
 @media (max-width: 992px) and (min-width: 701px) {
 
-	.right-top-cat .section-title {
-		font-size: 60px;
-		padding: 20px;
-	}
+    .right-top-cat .section-title {
+        font-size: 30px;
+    }
 
     .media-heading {
-	    font-size: 42px;
-	}
+        font-size: 18px;
+    }
 
-	.media {
-	    padding: 10px 40px 30px 40px;
-	}
+    .media {
+        padding: 5px 20px 10px 20px;
+    }
 
-	.media-body {
-	    padding: 0px 25px 0px 25px;
-	}
+    .media-body {
+        padding: 0px 5px 0px 15px;
+    }
 
-	.media-body-cat {
-		font-size: 35px;
-	}
+    .media-body-cat {
+        font-size: 12px;
+    }
 
 }
 

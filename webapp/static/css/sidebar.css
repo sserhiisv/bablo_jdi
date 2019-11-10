@@ -84,7 +84,7 @@
     cursor: pointer;
     transition: left .23s;
     z-index: 3;
-    width: 100px;
+    width: 60px;
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
 }
@@ -95,9 +95,9 @@
 
 .btn-menu span {
     display: block;
-    height: 10px;
+    height: 5px;
     background-color: #cc0000;
-    margin: 15px 0 10px;
+    margin: 5px 0 10px;
     transition: all .1s linear .0s;
     position: relative;
 }

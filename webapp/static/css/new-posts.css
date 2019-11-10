@@ -175,7 +175,8 @@
 
 
 	.new-posts-about-title {
-		font-size: 42px;
+		font-size: 22px;
+        padding: 0 0 0 10px;
 	}
 
 	.new-section {
