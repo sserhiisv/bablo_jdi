@@ -36,8 +36,18 @@
         <script src='{% static "js/languages.js" %}'></script>
         <script src='{% static "js/sidebar.js" %}'></script>
         <script src='{% static "js/search.js" %}'></script>
-        
-        {% block loadfiles %}{% endblock %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101337444-3"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-101337444-3');
+        </script>
+
+
+      {% block loadfiles %}{% endblock %}
 
     </head>
     
