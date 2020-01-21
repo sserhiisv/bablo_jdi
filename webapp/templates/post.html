@@ -71,7 +71,7 @@
 		</div>
 		<div class="post-similar-set">
 			{% for post_similar in similar %}
-				<a href="{% url 'view_post' pk=post_similar.pk %}">
+				<a class="post-similar-set-link" href="{% url 'view_post' pk=post_similar.pk %}">
 					<div class="post-similar-block">
 						<div class="post-similar-img" style="background-image: url({{ post_similar.image.url }});"></div>
 						<div class="post-similar-title">

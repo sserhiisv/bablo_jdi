@@ -4,16 +4,16 @@
 
 <div class="top-category">
     {% for most_pop_cat in most_pop_cat_posts %}
-        <div class="media">
+        <div class="media top-category-media">
             <div class="media-left hidden-xs hidden-sm">
-                <a href="{% url 'view_post' pk=most_pop_cat.pk %}">
+                <a class="top-category-left" href="{% url 'view_post' pk=most_pop_cat.pk %}">
                     {% thumbnail most_pop_cat.image "100" as im %}
                         <img class="media-object top-category-img" src="{{ im.url }}" alt="...">
                     {% endthumbnail %}
                 </a>
             </div>
             <div class="media-body">
-                <a href="{% url 'view_post' pk=most_pop_cat.pk %}" title="{{ most_pop_cat.title }}">
+                <a class="top-category-right" href="{% url 'view_post' pk=most_pop_cat.pk %}" title="{{ most_pop_cat.title }}">
                     <h4 class="media-heading hidden-xs hidden-sm">
                         {{ most_pop_cat.title|truncatewords:5 }}
                     </h4>
