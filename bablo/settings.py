@@ -31,7 +31,8 @@ ALLOWED_HOSTS = [
     '*'
     'localhost',
     '127.0.0.1',
-    str(server_ip)
+    str(server_ip),
+    'rakamakafo.com'
 ]
 
 
