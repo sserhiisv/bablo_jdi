@@ -34,11 +34,9 @@
 	</div>
 	{% for tag_post in tag_posts %}
 		<div class="new-posts-inner">
-      <a class="hidden-lg" href="{{ tag_post.get_absolute_url }}">
-        {% thumbnail tag_post.image "350" as im %}
-        <div class="new-posts-img" style="background-image: url({{ im.url }});"></div>
-        {% endthumbnail %}
-      </a>
+      {% thumbnail tag_post.image "350" as im %}
+      <div class="new-posts-img" style="background-image: url({{ im.url }});"></div>
+      {% endthumbnail %}
 			<div class="new-posts-about">
 				<div class="new-posts-about-title">
 					<a class="hidden-lg hidden-md" href="{{ tag_post.get_absolute_url }}">
