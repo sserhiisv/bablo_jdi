@@ -34,7 +34,7 @@
 		</div>
 		{% for new_post in new_posts %}
 			<div class="new-posts-inner">
-        <a class="hidden-lg hidden-md new-post-link" href="{% url 'view_post' pk=new_post.pk %}">
+        <a class="hidden-lg new-post-link" href="{% url 'view_post' pk=new_post.pk %}">
           {% thumbnail new_post.image "350" as im %}
           <div class="new-posts-img" style="background-image: url({{ im.url }});"></div>
           {% endthumbnail %}
