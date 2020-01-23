@@ -44,9 +44,11 @@
 	<div class="category-posts" style="padding: 30px;">
 		{% for cat_post in cat_posts %}
 			<div class="new-posts-inner">
-				{% thumbnail cat_post.image "500" as im %}
-					<div class="new-posts-img" style="background-image: url({{ im.url }});"></div>
-				{% endthumbnail %}
+        <a class="hidden-lg hidden-md" href="{% url 'view_post' pk=cat_post.pk %}">
+          {% thumbnail cat_post.image "500" as im %}
+          <div class="new-posts-img" style="background-image: url({{ im.url }});"></div>
+          {% endthumbnail %}
+        </a>
 				<div class="new-posts-about">
 					<div class="new-posts-about-title">
 						<a class="hidden-lg hidden-md" href="{% url 'view_post' pk=cat_post.pk %}">

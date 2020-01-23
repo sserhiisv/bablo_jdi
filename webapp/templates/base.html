@@ -15,8 +15,8 @@
 
         {% block title %}{% endblock %}
 
-        <link rel="shortcut icon" href='{% static "images/favicon/favicon.ico" %}' type="image/x-icon">
-        <link rel="icon" href='{% static "images/favicon/favicon.ico" %}' type="image/x-icon">
+        <link rel="shortcut icon" href='{% static "images/favicon.ico" %}' type="image/x-icon">
+        <link rel="icon" href='{% static "images/favicon.ico" %}' type="image/x-icon">
         
         <link rel="stylesheet" type="text/css" href='{% static "css/bootstrap.css" %}' />
         <link rel="stylesheet" type="text/css" href='{% static "css/mainstyle.css" %}' />
@@ -97,17 +97,17 @@
                     <a href="{% url 'home' %}">
                         <span id="logo1">Just double i</span>
                     </a>
-                    <span id="logo-plus">_</span>
+                    <!--<span id="logo-plus">_</span>-->
                     {% block section %}{% endblock %}
                 </div>
                 <div class="logo-bar hidden-xs hidden-sm">
-                    <a href="{% url 'home' %}">
+                    <a class="menu-main" href="{% url 'home' %}">
                         <span>{% trans "Главная" %}</span>
                     </a>
-                    <a href="{% url 'latest-posts' %}">
+                    <a class="menu-new" href="{% url 'latest-posts' %}">
                         <span>{% trans "Новое" %}</span>
                     </a>
-                    <a href="{% url 'popular-posts' %}">
+                    <a class="menu-popular" href="{% url 'popular-posts' %}">
                         <span>{% trans "Популярное" %}</span>
                     </a>
                 </div>

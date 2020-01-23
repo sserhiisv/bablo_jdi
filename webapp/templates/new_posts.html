@@ -34,9 +34,11 @@
 		</div>
 		{% for new_post in new_posts %}
 			<div class="new-posts-inner">
-				{% thumbnail new_post.image "350" as im %}
-				<div class="new-posts-img" style="background-image: url({{ im.url }});"></div>
-				{% endthumbnail %}
+        <a class="hidden-lg hidden-md" href="{% url 'view_post' pk=new_post.pk %}">
+          {% thumbnail new_post.image "350" as im %}
+          <div class="new-posts-img" style="background-image: url({{ im.url }});"></div>
+          {% endthumbnail %}
+        </a>
 				<div class="new-posts-about">
 					<div class="new-posts-about-title">
 						<a class="hidden-lg hidden-md" href="{% url 'view_post' pk=new_post.pk %}">
@@ -48,7 +50,7 @@
 					</div>
 					<div class="new-posts-about-desc hidden-xs hidden-sm">
 						<p class="new-post-date">{{ new_post.date }}</p>
-						{{ new_post.description|safe|truncatewords:30 }}
+            <p>{{ new_post.description|safe|truncatewords:30 }}</p>
 					</div>
 				</div>
 			</div>

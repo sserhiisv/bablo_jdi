@@ -29,10 +29,10 @@
 }
 
 .new-posts-about-title {
-	width: 100%;
-	padding: 20px;
-	font-size: 20px;
-	padding-bottom: 0;
+    width: 100%;
+    padding: 0 20px;
+    font-size: 26px;
+    padding-bottom: 0;
 }
 
 .new-posts-about-desc {
