@@ -2,14 +2,21 @@ from django.contrib import admin
 from django.conf import settings
 # from django.conf.urls import path, handler404, handler500
 from django.conf.urls.static import static
-
+from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 
 from webapp import views
+from webapp.sitemaps import PostSitemap, TagSitemap, CategorySitemap
 
 
 # handler404 = 'webapp.views.handler404'
 # handler500 = 'webapp.views.handler500'
+
+sitemaps = {
+    'posts': PostSitemap,
+    'categories': CategorySitemap,
+    'tags': TagSitemap
+}
 
 urlpatterns = [
     path('search/', views.search, name='search'),
@@ -25,4 +32,6 @@ urlpatterns += [
     path('category/<int:pk>/', views.CategoryPosts.as_view(), name='category'),
     path('view/<int:pk>/', views.ViewPost.as_view(), name='view_post'),
     path('tag/<int:pk>/', views.TagPosts.as_view(), name='tag'),
+
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
