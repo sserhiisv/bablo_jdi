@@ -77,7 +77,7 @@ class ReadPost(models.Model):
     description = RichTextField(config_name='ckeditor')
     content = RichTextField(config_name='ckeditor')
     date = models.DateTimeField()
-    image = sorl.thumbnail.ImageField(null=False, blank=True, upload_to='images/posts', verbose_name=u'Images')
+    image = sorl.thumbnail.ImageField(null=False, blank=False, upload_to='images/posts', verbose_name=u'Images')
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='draft')
     slug = models.SlugField('Slug')
     tag = models.ManyToManyField(Tag, related_name='readposts')
