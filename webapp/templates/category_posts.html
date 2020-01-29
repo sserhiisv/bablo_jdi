@@ -49,10 +49,10 @@
         {% endthumbnail %}
 				<div class="new-posts-about">
 					<div class="new-posts-about-title">
-						<a class="hidden-lg hidden-md" href="{% url 'view_post' pk=cat_post.pk %}">
+						<a class="hidden-lg hidden-md" href="{% url 'view_post_slug' slug=cat_post.slug %}">
 							{{ cat_post.title|truncatewords:7 }}
 						</a>
-						<a class="hidden-xs hidden-sm" href="{% url 'view_post' pk=cat_post.pk %}">
+						<a class="hidden-xs hidden-sm" href="{% url 'view_post_slug' slug=cat_post.slug %}">
 							{{ cat_post.title }}
 						</a>
 					</div>

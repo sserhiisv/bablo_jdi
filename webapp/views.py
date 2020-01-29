@@ -21,7 +21,7 @@ class HomePage(ListView):
     def get_context_data(self, **kwargs):
         context = super(HomePage, self).get_context_data(**kwargs)
         context['last_posts'] = ReadPost.objects.filter(status='published') \
-                                            .filter(date__lte=datetime.now())[:5]
+                                            .filter(date__lte=datetime.now())[:7]
         context['rand_posts'] = ReadPost.objects.filter(status='published') \
                                             .filter(date__lte=datetime.now()) \
                                             .order_by('?')[:5]
@@ -60,8 +60,8 @@ class CategoryPosts(ListView):
         context = super(CategoryPosts, self).get_context_data(**kwargs)
         context['cat_posts'] = ReadPost.objects.filter(status='published') \
                                            .filter(date__lte=datetime.now()) \
-                                           .filter(category__pk=self.kwargs.get('pk'))
-        context['category'] = Category.objects.get(pk=self.kwargs.get('pk'))
+                                           .filter(category__slug=self.kwargs.get('slug'))
+        context['category'] = Category.objects.get(slug=self.kwargs.get('slug'))
         return context
 
 
@@ -72,7 +72,7 @@ class ViewPost(HitCountDetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ViewPost, self).get_context_data(**kwargs)
-        r_post = ReadPost.objects.get(pk=self.kwargs['pk'])
+        r_post = ReadPost.objects.get(slug=self.kwargs['slug'])
         context['read_post'] = r_post
         context['similar'] = ReadPost.objects.filter(date__lte=datetime.now()) \
                                          .filter(category=r_post.category) \
@@ -87,8 +87,8 @@ class TagPosts(ListView):
     def get_context_data(self, **kwargs):
         context = super(TagPosts, self).get_context_data(**kwargs)
         context['tag_posts'] = ReadPost.objects.filter(date__lte=datetime.now()) \
-                                               .filter(tag__pk=self.kwargs['pk'])
-        context['tag'] = Tag.objects.get(pk=self.kwargs['pk'])
+                                               .filter(tag__slug=self.kwargs['slug'])
+        context['tag'] = Tag.objects.get(slug=self.kwargs['slug'])
         return context
 
 

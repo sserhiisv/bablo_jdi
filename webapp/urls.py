@@ -29,9 +29,14 @@ urlpatterns += [
     path('', views.HomePage.as_view(), name="home"),
     path('new_posts/', views.NewPosts.as_view(), name="latest-posts"),
     path('popular/', views.PopularPosts.as_view(), name="popular-posts"),
-    path('category/<int:pk>/', views.CategoryPosts.as_view(), name='category'),
-    path('view/<int:pk>/', views.ViewPost.as_view(), name='view_post'),
-    path('tag/<int:pk>/', views.TagPosts.as_view(), name='tag'),
+    # path('category/<int:pk>/', views.CategoryPosts.as_view(), name='category'),
+    # path('view/<int:pk>/', views.ViewPost.as_view(), name='view_post'),
+
+    path('article/<slug>/', views.ViewPost.as_view(), name='view_post_slug'),
+    path('category/<slug>/', views.CategoryPosts.as_view(), name='category_slug'),
+    path('tag/<slug>/', views.TagPosts.as_view(), name='tag_slug'),
+
+    # path('tag/<int:pk>/', views.TagPosts.as_view(), name='tag'),
 
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

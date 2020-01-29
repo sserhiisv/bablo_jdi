@@ -33,10 +33,10 @@
 			{% endthumbnail %}
 			<div class="new-posts-about">
 				<div class="new-posts-about-title">
-					<a class="hidden-lg hidden-md" href="{% url 'view_post' pk=pop_post.pk %}">
+					<a class="hidden-lg hidden-md" href="{% url 'view_post_slug' slug=pop_post.slug %}">
 						{{ pop_post.title|truncatewords:7 }}
 					</a>
-					<a class="hidden-xs hidden-sm" href="{% url 'view_post' pk=pop_post.pk %}">
+					<a class="hidden-xs hidden-sm" href="{% url 'view_post_slug' slug=pop_post.slug %}">
 						{{ pop_post.title }}
 					</a>
 				</div>

@@ -6,7 +6,7 @@
         {% ifequal LANGUAGE_CODE 'uk' %}
             {% for category_item in categories %}
                 <li>
-                    <a class="categories" href="{% url 'category' pk=category_item.pk %}">
+                    <a class="categories" href="{% url 'category_slug' slug=category_item.slug %}">
                         <span class="{{ category_item.icon }}"></span>&nbsp;
                         {{ category_item.name_ua }}
                     </a>
@@ -15,7 +15,7 @@
         {% else %}
             {% for category_item in categories %}
                 <li>
-                    <a class="categories" href="{% url 'category' pk=category_item.pk %}">
+                    <a class="categories" href="{% url 'category_slug' slug=category_item.slug %}">
                         <span class="{{ category_item.icon }}"></span>&nbsp;
                         {{ category_item.name }}
                     </a>

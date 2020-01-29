@@ -4,7 +4,7 @@
 
 <div class="row f-read-set">
     {% for random_post in random_advice_posts %}
-        <a class="f-read-set-link" href="{% url 'view_post' pk=random_post.pk %}">
+        <a class="f-read-set-link" href="{% url 'view_post_slug' slug=random_post.slug %}">
             <div class="f-read-block">
                 {% thumbnail random_post.image "350" as im %}
                     <div class="f-read-block-img" style="background-image: url({{ im.url }});"></div>
