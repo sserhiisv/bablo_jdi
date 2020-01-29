@@ -33,7 +33,7 @@
 				<ul class="nav nav-pills nav-stacked blue">
 					{% for result_post in result %}
 						<li>
-							<a class="button_category_posts" href="{{ result_post.get_absolute_url }}">
+							<a class="button_category_posts" href="{% url 'view_post_slug' slug=result_post.slug %}">
 								{{ result_post.title|truncatewords:7 }}
 							</a>
 							<span class="rubric">{{ result_post.category }}</span>
