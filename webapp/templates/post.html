@@ -34,7 +34,7 @@
 	<div class="post-info">
 		{{ read_post.date }} |
 		<br class="hidden-lg hidden-md">
-		{{ read_post.author }} |
+		<!--{{ read_post.author }} |-->
 		<span class="glyphicon glyphicon-eye-open"></span> {{ hitcount.total_hits }}
 	</div>
 	<div class="post-title">
@@ -54,7 +54,7 @@
 	<div class="post-tags">
 		<span>Теги:</span>
 		{% for tag in read_post.tag.all %}
-			<a href="{% url 'tag' pk=tag.pk %}">
+			<a href="{% url 'tag_slug' slug=tag.slug %}">
 				<span class="label label-primary">{{ tag }}</span>
 			</a>
 		{% endfor %}
@@ -71,7 +71,7 @@
 		</div>
 		<div class="post-similar-set">
 			{% for post_similar in similar %}
-				<a class="post-similar-set-link" href="{% url 'view_post' pk=post_similar.pk %}">
+				<a class="post-similar-set-link" href="{% url 'view_post_slug' slug=post_similar.slug %}">
 					<div class="post-similar-block">
 						<div class="post-similar-img" style="background-image: url({{ post_similar.image.url }});"></div>
 						<div class="post-similar-title">
