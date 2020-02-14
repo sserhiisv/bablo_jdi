@@ -76,13 +76,13 @@
 
                             <div class="logo-bar-small hidden-md hidden-lg">
                                 <a href="{% url 'home' %}">
-                                    <p>{% trans "Главная" %}</p>
+                                    <p>{% trans "Home" %}</p>
                                 </a>
                                 <a href="{% url 'latest-posts' %}">
-                                    <p>{% trans "Новое" %}</p>
+                                    <p>{% trans "New" %}</p>
                                 </a>
                                 <a href="{% url 'popular-posts' %}">
-                                    <p>{% trans "Популярное" %}</p>
+                                    <p>{% trans "Popular" %}</p>
                                 </a>
                             </div>
 
@@ -102,13 +102,13 @@
                 </div>
                 <div class="logo-bar hidden-xs hidden-sm">
                     <a class="menu-main" href="{% url 'home' %}">
-                        <span>{% trans "Главная" %}</span>
+                        <span>{% trans "Home" %}</span>
                     </a>
                     <a class="menu-new" href="{% url 'latest-posts' %}">
-                        <span>{% trans "Новое" %}</span>
+                        <span>{% trans "New" %}</span>
                     </a>
                     <a class="menu-popular" href="{% url 'popular-posts' %}">
-                        <span>{% trans "Популярное" %}</span>
+                        <span>{% trans "Popular" %}</span>
                     </a>
                 </div>
                 <div class="column hidden-xs hidden-sm">
@@ -169,7 +169,7 @@
 
                     <div class="right-popular hidden-xs hidden-sm">
                         <div class="section-title">
-                            <span>{% trans "Самое читаемое" %}</span>
+                            <span>{% trans "Most reading" %}</span>
                         </div>
 
                         {% block most_reading_posts %}
@@ -183,7 +183,7 @@
 
                     <div class="right-top-cat">
                         <div class="section-title">
-                            <span>{% trans "Топ по категориям" %} </span>
+                            <span>{% trans "Top by category" %} </span>
                         </div>
 
                         {% block top_post_by_category %}
@@ -197,7 +197,7 @@
 
             <div class="f-read">
                 <div class="f-read-title">
-                    <span>{% trans "random советует почитать..." %}</span>
+                    <span>{% trans "random advice..." %}</span>
                 </div>
 
                 {% block random_advice %}
@@ -208,28 +208,28 @@
             <div class="footer">
                 <div class="footer-inner hidden-xs hidden-sm">
                     <dl class="footer-info">
-                        <dt>{% trans "Разделы.." %}</dt>
+                        <dt>{% trans "Sections.." %}</dt>
                         <dd>
-                            <a href="{% url 'home' %}">{% trans "Главная" %}</a>
+                            <a href="{% url 'home' %}">{% trans "Home" %}</a>
                         </dd>
                         <dd>
-                            <a href="{% url 'latest-posts' %}">{% trans "Новое" %}</a>
+                            <a href="{% url 'latest-posts' %}">{% trans "New" %}</a>
                         </dd>
                         <dd>
-                            <a href="{% url 'popular-posts' %}">{% trans "Популярное" %}</a>
+                            <a href="{% url 'popular-posts' %}">{% trans "Popular" %}</a>
                         </dd>
                     </dl>
                     <dl class="footer-info">
-                        <dt>{% trans "Инфо.." %}</dt>
+                        <dt>{% trans "Info.." %}</dt>
                         <dd>
-                            <a href="{% url 'about' %}">{% trans "Про" %}</a>
+                            <a href="{% url 'about' %}">{% trans "About" %}</a>
                         </dd>
-                        <dd>{% trans "Соглашение" %}</dd>
+                        <dd>{% trans "Agreements" %}</dd>
                     </dl>
                     <dl class="footer-info">
                         <dt>...</dt>
-                        <dd>{% trans "Помощь" %}</dd>
-                        <dd>{% trans "Другое" %}</dd>
+                        <dd>{% trans "Help" %}</dd>
+                        <dd>{% trans "Other" %}</dd>
                     </dl>
                     <dl class="footer-rights">
                         <dd>rakamakafo</dd>
@@ -246,21 +246,21 @@
                 <div class="footer-inner-small hidden-md hidden-lg">
                   <div class="info-small-first">
                     <dl class="small-first-inner">
-                        <dt>{% trans "Разделы.." %}</dt>
+                        <dt>{% trans "Sections.." %}</dt>
                         <dd>
-                            <a href="{% url 'home' %}">{% trans "Главная" %}</a>
+                            <a href="{% url 'home' %}">{% trans "Home" %}</a>
                         </dd>
                         <dd>
-                            <a href="{% url 'latest-posts' %}">{% trans "Новое" %}</a>
+                            <a href="{% url 'latest-posts' %}">{% trans "New" %}</a>
                         </dd>
                         <dd>
-                            <a href="{% url 'popular-posts' %}">{% trans "Популярное" %}</a>
+                            <a href="{% url 'popular-posts' %}">{% trans "Popular" %}</a>
                         </dd>
                     </dl>
                     <dl class="small-first-inner">
                         <dt>...</dt>
                         <dd>
-                            <a href="{% url 'about' %}">{% trans "Про" %}</a>
+                            <a href="{% url 'about' %}">{% trans "About" %}</a>
                         </dd>
                     </dl>
                   </div>

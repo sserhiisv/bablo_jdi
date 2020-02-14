@@ -22,7 +22,7 @@
 {% endblock %}
 
 {% block section %}
-	<span id="logo-section">Тег</span>
+	<span id="logo-section">Tag</span>
 {% endblock %}
 
 
@@ -30,7 +30,7 @@
 
 <div class="tag">
 	<div class="tag-inner">
-		{% trans 'Статьи по тегу' %}:<span id="tag-name"> {{ tag }}</span>
+		{% trans 'Tag' %}:<span id="tag-name"> {{ tag }}</span>
 	</div>
 	{% for tag_post in tag_posts %}
 		<div class="new-posts-inner">

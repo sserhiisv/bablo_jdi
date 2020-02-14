@@ -2,9 +2,10 @@
 
 {% load i18n %}
 {% load staticfiles %}
+{% load thumbnail %}
 
 {% block title %}
-    <title>{% trans 'Поиск' %} | Rakamakafo</title>
+    <title>{% trans 'Search' %} | Just double i</title>
 {% endblock %}
 
 {% block loadfiles %}
@@ -12,7 +13,7 @@
 {% endblock %}
 
 {% block section %}
-	<span id="logo-section">{% trans 'Поиск' %}</span>
+	<span id="logo-section">{% trans 'Search' %}</span>
 {% endblock %}
 
 {% block search %}
@@ -38,7 +39,6 @@
 							</a>
 							<span class="rubric">{{ result_post.category }}</span>
 							<span class="rubric">{{ result_post.date }}</span>
-							<span class="rubric">{{ result_post.author }}</span>
 						</li>
 					{% endfor %}
 				</ul>

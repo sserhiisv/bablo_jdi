@@ -5,7 +5,7 @@
 {% load thumbnail %}
 
 {% block title %}
-    <title>{% trans 'Новое' %} | Rakamakafo</title>
+    <title>{% trans 'New' %} | Rakamakafo</title>
 {% endblock %}
 
 {% block meta_desc %}
@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block section %}
-	<span id="logo-section">{% trans 'Новое' %}</span>
+	<span id="logo-section">{% trans 'New' %}</span>
 {% endblock %}
 
 {% block latest_posts %}
@@ -29,8 +29,8 @@
 	<div class="new-posts">
 		<div class="new-section">
 			<span>
-				{% trans 'Новые публикации' %} <span class="glyphicon glyphicon-arrow-down"></span>
-				</span>
+				{% trans 'New posts' %} <span class="glyphicon glyphicon-arrow-down"></span>
+			</span>
 		</div>
 		{% for new_post in new_posts %}
 			<div class="new-posts-inner">
@@ -48,7 +48,7 @@
 					</div>
 					<div class="new-posts-about-desc hidden-xs hidden-sm">
 						<p class="new-post-date">{{ new_post.date }}</p>
-            <p>{{ new_post.description|safe|truncatewords:30 }}</p>
+            			<p>{{ new_post.description|safe|truncatewords:30 }}</p>
 					</div>
 				</div>
 			</div>
