@@ -7,3 +7,4 @@ gunicorn==19.9.0
 Pillow==6.2.0
 pytz==2019.3
 sorl-thumbnail==12.5.0
+djangorestframework==3.11.0
