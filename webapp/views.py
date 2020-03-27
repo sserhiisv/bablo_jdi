@@ -3,15 +3,24 @@ import operator
 
 from datetime import datetime
 
+from django.http import JsonResponse
+
+from django.contrib.auth.models import User
+
 from django.shortcuts import render, render_to_response
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import ListView
+from django.views.generic import ListView, View
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 
 from hitcount.views import HitCountDetailView
 
-from webapp.models import ReadPost, Category, Tag
+from webapp.models import ReadPost, Category, Tag, Profile
+from webapp.serializers import ProfileSerializer
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 
 class HomePage(ListView):
@@ -159,3 +168,159 @@ def search(request):
 
 def about(request):
     return render(request, 'about.html')
+
+###########################--
+# def get_user_profile(request):
+#     response_data = {}
+#     return JsonResponse(response_data)
+#
+#
+# def delete_user_profile(request):
+#     response_data = {}
+#     return JsonResponse(response_data)
+#
+#
+# def create_user_profile(request):
+#     response_data = {}
+#     return JsonResponse(response_data)
+
+# class UserProfile(View):
+#     def get(self, request):
+#         profile = Profile.objects.filter(android_id=request.kwargs.get('android_id'))
+#
+#         if not profile:
+#             return JsonResponse({
+#                 'message': f'User with android_id {request.kwargs.get("android_id")} does not exist'
+#             }, status=404)
+#
+#         response_data = {
+#             'android_id': profile.android_id,
+#             'username': profile.username,
+#             'score': profile.score,
+#             'friend_score': profile.friend_score,
+#             'money_output': profile.money_output
+#         }
+#         return JsonResponse(response_data, status=200)
+#
+#     def delete(self, request):
+#         profile = Profile.objects.filter(android_id=request.kwargs.get('android_id'))
+#         if not profile:
+#             return JsonResponse({
+#                 'message': f'User with android_id {request.kwargs.get("android_id")} does not exist'
+#             }, status=404)
+#
+#         profile.delete()
+#
+#         return JsonResponse({
+#             'message': f'user {request.kwargs.get("android_id")} succesfuly deleted'
+#         }, status=200)
+#
+#     def post(self, request):
+#         profile = Profile.objects.filter(android_id=request.kwargs.get('android_id'))
+#         if not profile:
+#             return JsonResponse({
+#                 'message': f'User with android_id {request.kwargs.get("android_id")} does not exist'
+#             }, status=404)
+#
+#         try:
+#             profile.create_or_update(request.kwargs.get('profile_data'))
+#         except Exception as e:
+#             return JsonResponse({'message': str(e)}, status=400)
+#
+#         return JsonResponse({'message': 'success'}, status=200)
+
+
+class UserProfileRest(APIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ProfileSerializer
+
+    def get(self, request):
+        android_id = request.data.get('android_id')
+        if not android_id:
+            return Response({
+                'message': f'"android_id" is required field'
+            }, status=400)
+
+        profile = Profile.objects.filter(android_id=android_id)
+
+        if not profile:
+            return Response({
+                'message': f'User with android_id="{android_id}" does not exist'
+            }, status=404)
+
+        response_data = {
+            'android_id': profile[0].android_id,
+            'username': profile[0].username,
+            'score': profile[0].score,
+            'friend_score': profile[0].friend_score,
+            'money_output': profile[0].money_output
+        }
+        return Response(response_data, status=200)
+
+    def delete(self, request):
+        android_id = request.data.get('android_id')
+        profile = Profile.objects.filter(android_id=android_id)
+        if not profile:
+            return Response({
+                'message': f'User with android_id="{android_id}" does not exist'
+            }, status=404)
+
+        profile[0].delete()
+
+        return Response({
+            'message': f'user android_id="{android_id}" succesfuly deleted'
+        }, status=200)
+
+    def post(self, request):
+        data = {
+            'android_id': request.data.get('android_id'),
+            'username': request.data.get('username', 'User'),
+            'score': request.data.get('score'),
+            'friend_score': request.data.get('friend_score'),
+            'money_output': request.data.get('money_output')
+        }
+
+        if not data.get('android_id'):
+            return Response({
+                'message': f'"android_id" is required field'
+            }, status=400)
+
+        profile = Profile.objects.filter(android_id=data.get('android_id'))
+        if profile:
+            return Response({
+                'message': f'User with android_id="{data.get("android_id")}" already exist'
+            }, status=400)
+
+        try:
+            profile.create(**data)
+        except Exception as e:
+            return Response({'message': str(e)}, status=400)
+
+        return Response({'message': 'success'}, status=201)
+
+    def put(self, request):
+        data = {
+            'android_id': request.data.get('android_id'),
+            'username': request.data.get('username', 'User'),
+            'score': request.data.get('score'),
+            'friend_score': request.data.get('friend_score'),
+            'money_output': request.data.get('money_output')
+        }
+
+        if not data.get('android_id'):
+            return Response({
+                'message': f'"android_id" is required field'
+            }, status=400)
+
+        profile = Profile.objects.filter(android_id=data.get('android_id'))
+        if not profile:
+            return Response({
+                'message': f'User with android_id="{data.get("android_id")}" does not exist'
+            }, status=404)
+
+        try:
+            profile.update(**data)
+        except Exception as e:
+            return Response({'message': str(e)}, status=400)
+
+        return Response({'message': 'success'}, status=200)

@@ -3,7 +3,7 @@ from django.utils.html import format_html
 
 from sorl.thumbnail import get_thumbnail
 
-from webapp.models import ReadPost, Category, Tag
+from webapp.models import ReadPost, Category, Tag, Profile
 
 
 @admin.register(ReadPost)
@@ -59,3 +59,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class TagAdmin(admin.ModelAdmin):
     fields = ['title']
     list_display = ['title', 'slug']
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    fields = ['android_id', 'username', 'score', 'friend_score', 'money_output']
+    list_display = ['android_id', 'username', 'score', 'friend_score', 'money_output']

@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 
+from rest_framework.authtoken.views import obtain_auth_token
+
 from webapp import views
 from webapp.sitemaps import PostSitemap, TagSitemap, CategorySitemap
 
@@ -23,6 +25,12 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     # path('404/', views.handler404, name='handler404'),
     # path('500/', views.handler500, name='handler500'),
+]
+
+urlpatterns += [
+    # path('api/v1/user/', views.UserProfile.as_view(), name='user_profile'),
+    path('api/v1/user_profile/', views.UserProfileRest.as_view(), name='user-profile-rest'),
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth')
 ]
 
 urlpatterns += [

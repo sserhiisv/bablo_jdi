@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%3(6!kw^2m^=@d8d=8-20*76ho@@+1pjrlx2)%p++cazv+m($7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 server_ip = os.environ.get('SERVER_IP')
 
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'rest_framework',
+    'rest_framework.authtoken',
     'ckeditor',
     'sorl.thumbnail',
     'hitcount',
@@ -213,3 +215,9 @@ LOGGING = {
 THUMBNAIL_PRESERVE_FORMAT = True
 
 # COMPRESS_OFFLINE = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
+}

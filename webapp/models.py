@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 import sorl
 
+from django.contrib.auth.models import User
+
 from django.db import models
 from django.urls import reverse
 from django.contrib.contenttypes.fields import GenericRelation
@@ -105,3 +107,16 @@ class ReadPost(models.Model):
                 'pk': self.pk
             }
         )
+
+
+class Profile(models.Model):
+    # user = models.OneToOneField(User, related_name='student_profile',
+    #                             on_delete=models.CASCADE)
+    username = models.CharField(default='AppUser', max_length=256)
+    score = models.IntegerField(default=0)
+    friend_score = models.IntegerField(default=0)
+    money_output = models.FloatField(default=0)
+    android_id = models.CharField(default='', max_length=256, unique=True)
+
+    def __str__(self):
+        return f'User #{self.android_id} profile'
