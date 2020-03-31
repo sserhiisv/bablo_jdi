@@ -28,8 +28,10 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    # path('api/v1/user/', views.UserProfile.as_view(), name='user_profile'),
     path('api/v1/user_profile/', views.UserProfileRest.as_view(), name='user-profile-rest'),
+    path('api/v1/referal/', views.ReferalRest.as_view(), name='referal-rest'),
+    path('api/v1/referal/action/', views.ReferalAction.as_view(), name='referal-action'),
+
     path('api-token-auth/', obtain_auth_token, name='api_token_auth')
 ]
 

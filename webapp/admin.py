@@ -3,7 +3,7 @@ from django.utils.html import format_html
 
 from sorl.thumbnail import get_thumbnail
 
-from webapp.models import ReadPost, Category, Tag, Profile
+from webapp.models import ReadPost, Category, Tag, Profile, Referal
 
 
 @admin.register(ReadPost)
@@ -63,5 +63,17 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    fields = ['android_id', 'username', 'score', 'friend_score', 'money_output']
-    list_display = ['android_id', 'username', 'score', 'friend_score', 'money_output']
+    fields = [
+        'android_id', 'username', 'score', 'friend_score', 'money_output',
+        'referal_id', 'timestamp', 'views'
+    ]
+    list_display = [
+        'android_id', 'username', 'score', 'friend_score', 'money_output',
+        'referal_id', 'timestamp', 'views'
+    ]
+
+
+@admin.register(Referal)
+class ReferalAdmin(admin.ModelAdmin):
+    fields = ['referal_id', 'android_id_from', 'android_id_to']
+    list_display = ['referal_id', 'android_id_from', 'android_id_to']

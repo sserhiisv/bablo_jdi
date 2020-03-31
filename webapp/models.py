@@ -110,13 +110,23 @@ class ReadPost(models.Model):
 
 
 class Profile(models.Model):
-    # user = models.OneToOneField(User, related_name='student_profile',
-    #                             on_delete=models.CASCADE)
     username = models.CharField(default='AppUser', max_length=256)
     score = models.IntegerField(default=0)
     friend_score = models.IntegerField(default=0)
     money_output = models.FloatField(default=0)
     android_id = models.CharField(default='', max_length=256, unique=True)
+    referal_id = models.CharField(default='', max_length=256, unique=True)
+    timestamp = models.CharField(default='', max_length=256)
+    views = models.IntegerField(default=0)
 
     def __str__(self):
-        return f'User #{self.android_id} profile'
+        return f'android #{self.android_id} profile'
+
+
+class Referal(models.Model):
+    referal_id = models.CharField(default='', max_length=256, unique=True)
+    android_id_from = models.CharField(default='', max_length=256)
+    android_id_to = models.CharField(default='', max_length=256)
+
+    def __str__(self):
+        return f'referal #{self.referal_id} profile'
