@@ -17,11 +17,20 @@ services:
     restart: always
     ports:
       - "80:80"
+      - "443:443"
     links:
       - web:web
     volumes:
       - ./config/nginx:/config/nginx
       - ./config/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
       - ./webapp:/web/webapp
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     depends_on:
       - web
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
