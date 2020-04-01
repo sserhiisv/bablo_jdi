@@ -218,29 +218,32 @@ class UserProfileRest(APIView):
         }, status=200)
 
     def post(self, request):
-        data = {
-            'android_id': request.data.get('android_id'),
-            'username': request.data.get('username', 'User'),
-            'referal_id': uuid.uuid1().hex
-        }
+        if request.data.get('type') == 'GET':
+            self.get(request)
+        else:
+            data = {
+                'android_id': request.data.get('android_id'),
+                'username': request.data.get('username', 'User'),
+                'referal_id': uuid.uuid1().hex
+            }
 
-        if not data.get('android_id'):
-            return Response({
-                'message': f'"android_id" is required field'
-            }, status=400)
+            if not data.get('android_id'):
+                return Response({
+                    'message': f'"android_id" is required field'
+                }, status=400)
 
-        profile = Profile.objects.filter(android_id=data.get('android_id'))
-        if profile:
-            return Response({
-                'message': f'User with android_id="{data.get("android_id")}" already exist'
-            }, status=400)
+            profile = Profile.objects.filter(android_id=data.get('android_id'))
+            if profile:
+                return Response({
+                    'message': f'User with android_id="{data.get("android_id")}" already exist'
+                }, status=400)
 
-        try:
-            profile.create(**data)
-        except Exception as e:
-            return Response({'message': str(e)}, status=400)
+            try:
+                profile.create(**data)
+            except Exception as e:
+                return Response({'message': str(e)}, status=400)
 
-        return Response({'message': 'success'}, status=200)
+            return Response({'message': 'success'}, status=200)
 
     def put(self, request):
 
@@ -371,46 +374,49 @@ class ReferalRest(APIView):
             return Response({'message': 'success'}, status=200)
 
     def post(self, request):
-        data = {
-            'android_id_from': request.data.get('android_id_from'),
-            'android_id_to': request.data.get('android_id_to'),
-        }
+        if request.data.get('type') == 'GET':
+            self.get(request)
+        else:
+            data = {
+                'android_id_from': request.data.get('android_id_from'),
+                'android_id_to': request.data.get('android_id_to'),
+            }
 
-        if not data.get('android_id_from') and not data.get('android_id_to'):
+            if not data.get('android_id_from') and not data.get('android_id_to'):
+                return Response({
+                    'message': f'"android_id_to" and "android_id_from" are required fields'
+                }, status=400)
+
+            profile_from = Profile.objects.filter(android_id=data.get('android_id_from'))
+            if not profile_from:
+                return Response({
+                    'message': f'profile android_id_from="{data.get("android_id_from")}" does not exist'
+                }, status=400)
+
+            profile_to = Profile.objects.filter(android_id=data.get('android_id_to'))
+            if not profile_to:
+                return Response({
+                    'message': f'profile android_id_to="{data.get("android_id_to")}" does not exist'
+                }, status=400)
+
+            referal_id = profile_from[0].referal_id
+
+            try:
+                ref = Referal(
+                    android_id_from=data.get('android_id_from'),
+                    android_id_to=data.get('android_id_to'),
+                    referal_id=referal_id
+                )
+                ref.save()
+            except Exception as e:
+                return Response({'message': str(e)}, status=400)
+
             return Response({
-                'message': f'"android_id_to" and "android_id_from" are required fields'
-            }, status=400)
-
-        profile_from = Profile.objects.filter(android_id=data.get('android_id_from'))
-        if not profile_from:
-            return Response({
-                'message': f'profile android_id_from="{data.get("android_id_from")}" does not exist'
-            }, status=400)
-
-        profile_to = Profile.objects.filter(android_id=data.get('android_id_to'))
-        if not profile_to:
-            return Response({
-                'message': f'profile android_id_to="{data.get("android_id_to")}" does not exist'
-            }, status=400)
-
-        referal_id = profile_from[0].referal_id
-
-        try:
-            ref = Referal(
-                android_id_from=data.get('android_id_from'),
-                android_id_to=data.get('android_id_to'),
-                referal_id=referal_id
-            )
-            ref.save()
-        except Exception as e:
-            return Response({'message': str(e)}, status=400)
-
-        return Response({
-            'referal_id': referal_id,
-            'android_id_from': request.data.get('android_id_from'),
-            'android_id_to': request.data.get('android_id_to'),
-            'message': 'success'
-        }, status=200)
+                'referal_id': referal_id,
+                'android_id_from': request.data.get('android_id_from'),
+                'android_id_to': request.data.get('android_id_to'),
+                'message': 'success'
+            }, status=200)
 
 
 class ReferalAction(APIView):
