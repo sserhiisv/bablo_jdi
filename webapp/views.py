@@ -177,19 +177,19 @@ class UserProfileRest(APIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = ProfileSerializer
 
-    def get(self, request):
+    def get_request(self, request):
         android_id = request.data.get('android_id')
         if not android_id:
-            return Response({
+            return {
                 'message': f'"android_id" is required field'
-            }, status=400)
+            }, 400
 
         profile = Profile.objects.filter(android_id=android_id)
 
         if not profile:
-            return Response({
+            return {
                 'message': f'User with android_id="{android_id}" does not exist'
-            }, status=404)
+            }, 404
 
         response_data = {
             'android_id': profile[0].android_id,
@@ -201,7 +201,11 @@ class UserProfileRest(APIView):
             'timestamp': profile[0].timestamp,
             'views': profile[0].views
         }
-        return Response(response_data, status=200)
+        return response_data, 200
+
+    def get(self, request):
+        response_data, status = self.get_request(request)
+        return Response(response_data, status=status)
 
     def delete(self, request):
         android_id = request.data.get('android_id')
@@ -219,7 +223,8 @@ class UserProfileRest(APIView):
 
     def post(self, request):
         if request.data.get('type') == 'GET':
-            self.get(request)
+            response_data, status = self.get_request(request)
+            return Response(response_data, status=status)
         else:
             data = {
                 'android_id': request.data.get('android_id'),
@@ -285,21 +290,21 @@ class ReferalRest(APIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = ProfileSerializer
 
-    def get(self, request):
+    def get_request(self, request):
         android_id = request.data.get('android_id')
         referal_id = request.data.get('referal_id')
         if not android_id and referal_id:
-            return Response({
+            return {
                 'message': f'"android_id" or "referal_id" required field'
-            }, status=400)
+            }, 400
 
         if android_id:
             referals = Referal.objects.filter(android_id_from=android_id)
 
             if not referals:
-                return Response({
+                return {
                     'message': f'Referals with android_id="{android_id}" does not exist'
-                }, status=404)
+                }, 404
 
             response_data = {
                 'items': [
@@ -310,22 +315,26 @@ class ReferalRest(APIView):
                     } for el in referals
                 ]
             }
-            return Response(response_data, status=200)
+            return response_data, 200
 
         if referal_id:
             referals = Referal.objects.filter(referal_id=referal_id)
 
             if not referals:
-                return Response({
+                return {
                     'message': f'Referals with referal_id="{referal_id}" does not exist'
-                }, status=404)
+                }, 404
 
             response_data = {
                 'android_id_from': referals[0].android_id_from,
                 'android_id_to': referals[0].android_id_to,
                 'referal_id': referals[0].referal_id
             }
-            return Response(response_data, status=200)
+            return response_data, 200
+
+    def get(self, request):
+        response_data, status = self.get_request(request)
+        return Response(response_data, status=status)
 
     def delete(self, request):
         android_id_from = request.data.get('android_id_from')
@@ -375,7 +384,8 @@ class ReferalRest(APIView):
 
     def post(self, request):
         if request.data.get('type') == 'GET':
-            self.get(request)
+            response_data, status = self.get_request(request)
+            return Response(response_data, status=status)
         else:
             data = {
                 'android_id_from': request.data.get('android_id_from'),
