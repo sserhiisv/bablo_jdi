@@ -124,7 +124,7 @@ class Profile(models.Model):
 
 
 class Referal(models.Model):
-    referal_id = models.CharField(default='', max_length=256, unique=True)
+    referal_id = models.CharField(default='', max_length=256)
     android_id_from = models.CharField(default='', max_length=256)
     android_id_to = models.CharField(default='', max_length=256)
 
