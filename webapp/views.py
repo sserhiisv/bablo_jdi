@@ -298,43 +298,43 @@ class ReferalRest(APIView):
                 'message': f'"android_id" or "referal_id" required field'
             }, 400
 
+        referals = None
+
         if android_id:
             referals = Referal.objects.filter(android_id_from=android_id)
-
-            if not referals:
-                return {
-                    'message': f'Referals with android_id="{android_id}" does not exist'
-                }, 404
-
-            response_data = {
-                'items': [
-                    {
-                        'android_id_from': el.android_id_from,
-                        'android_id_to': el.android_id_to,
-                        'referal_id': el.referal_id
-                    } for el in referals
-                ]
-            }
-            return response_data, 200
-
-        if referal_id:
+        elif referal_id:
             referals = Referal.objects.filter(referal_id=referal_id)
 
-            if not referals:
-                return {
-                    'message': f'Referals with referal_id="{referal_id}" does not exist'
-                }, 404
+        if not referals:
+            return {
+               'items': []
+            }, 200
 
-            response_data = {
-                'items': [
-                    {
-                        'android_id_from': el.android_id_from,
-                        'android_id_to': el.android_id_to,
-                        'referal_id': el.referal_id
-                    } for el in referals
-                ]
-            }
+        response_data = {
+            'items': [],
+            'profile_from': referals[0].android_id_from,
+            'referal_id': referal_id
+        }
+
+        if not referals:
             return response_data, 200
+
+
+        android_ids = referals.values_list('android_id_to', flat=True)
+
+        profiles = Profile.objects.filter(android_id__in=android_ids)
+
+        for el in profiles:
+            response_data['items'].append({
+                'android_id': el.android_id,
+                'username': el.username,
+                'score': el.score,
+                'friend_score': el.friend_score,
+                'money_output': el.money_output,
+                'timestamp': el.timestamp,
+                'views': el.views
+            })
+        return response_data, 200
 
     def get(self, request):
         response_data, status = self.get_request(request)
