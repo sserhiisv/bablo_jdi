@@ -388,19 +388,19 @@ class ReferalRest(APIView):
             return Response(response_data, status=status)
         else:
             data = {
-                'android_id_from': request.data.get('android_id_from'),
+                'referal_id': request.data.get('referal_id'),
                 'android_id_to': request.data.get('android_id_to'),
             }
 
-            if not data.get('android_id_from') and not data.get('android_id_to'):
+            if not data.get('referal_id') and not data.get('android_id_to'):
                 return Response({
-                    'message': f'"android_id_to" and "android_id_from" are required fields'
+                    'message': f'"android_id_to" and "referal_id" are required fields'
                 }, status=400)
 
-            profile_from = Profile.objects.filter(android_id=data.get('android_id_from'))
-            if not profile_from:
+            referal_id_profile = Profile.objects.filter(referal_id=data.get('referal_id'))
+            if not referal_id_profile:
                 return Response({
-                    'message': f'profile android_id_from="{data.get("android_id_from")}" does not exist'
+                    'message': f'profile with referal_id="{data.get("referal_id")}" does not exist'
                 }, status=400)
 
             profile_to = Profile.objects.filter(android_id=data.get('android_id_to'))
@@ -409,21 +409,19 @@ class ReferalRest(APIView):
                     'message': f'profile android_id_to="{data.get("android_id_to")}" does not exist'
                 }, status=400)
 
-            referal_id = profile_from[0].referal_id
-
             try:
                 ref = Referal(
-                    android_id_from=data.get('android_id_from'),
+                    android_id_from=referal_id_profile[0].android_id,
                     android_id_to=data.get('android_id_to'),
-                    referal_id=referal_id
+                    referal_id=data.get('referal_id')
                 )
                 ref.save()
             except Exception as e:
                 return Response({'message': str(e)}, status=400)
 
             return Response({
-                'referal_id': referal_id,
-                'android_id_from': request.data.get('android_id_from'),
+                'referal_id': data.get('referal_id'),
+                'android_id_from': referal_id_profile[0].android_id,
                 'android_id_to': request.data.get('android_id_to'),
                 'message': 'success'
             }, status=200)
