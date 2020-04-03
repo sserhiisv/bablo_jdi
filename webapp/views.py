@@ -293,7 +293,7 @@ class ReferalRest(APIView):
     def get_request(self, request):
         android_id = request.data.get('android_id')
         referal_id = request.data.get('referal_id')
-        if not android_id and referal_id:
+        if not android_id and not referal_id:
             return {
                 'message': f'"android_id" or "referal_id" required field'
             }, 400
@@ -326,9 +326,13 @@ class ReferalRest(APIView):
                 }, 404
 
             response_data = {
-                'android_id_from': referals[0].android_id_from,
-                'android_id_to': referals[0].android_id_to,
-                'referal_id': referals[0].referal_id
+                'items': [
+                    {
+                        'android_id_from': el.android_id_from,
+                        'android_id_to': el.android_id_to,
+                        'referal_id': el.referal_id
+                    } for el in referals
+                ]
             }
             return response_data, 200
 
