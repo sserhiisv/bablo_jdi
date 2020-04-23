@@ -229,7 +229,8 @@ class UserProfileRest(APIView):
             data = {
                 'android_id': request.data.get('android_id'),
                 'username': request.data.get('username', 'User'),
-                'referal_id': uuid.uuid1().hex
+                'referal_id': uuid.uuid1().hex,
+                'timestamp': datetime.now().isoformat()
             }
 
             if not data.get('android_id'):
@@ -259,7 +260,6 @@ class UserProfileRest(APIView):
             'score': request.data.get('score'),
             'friend_score': request.data.get('friend_score'),
             'money_output': request.data.get('money_output'),
-            'timestamp': request.data.get('timestamp'),
             'views': request.data.get('views'),
         }
 
