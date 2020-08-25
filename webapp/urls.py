@@ -25,6 +25,8 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     # path('404/', views.handler404, name='handler404'),
     # path('500/', views.handler500, name='handler500'),
+
+    path('clock/', views.Clock.as_view(), name='clock'),
 ]
 
 urlpatterns += [

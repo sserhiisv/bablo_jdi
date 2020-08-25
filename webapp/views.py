@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 from django.shortcuts import render, render_to_response
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import ListView, View
+from django.views.generic import ListView, View, TemplateView
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 
@@ -22,6 +22,10 @@ from webapp.serializers import ProfileSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+
+
+class Clock(TemplateView):
+    template_name = 'clock.html'
 
 
 class HomePage(ListView):
